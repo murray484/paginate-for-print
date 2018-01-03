@@ -23,6 +23,7 @@ export function createToc() {
         }
         let tocItemDiv = document.createElement('div')
         tocItemDiv.classList.add('pagination-toc-entry')
+        tocItemDiv.classList.add('pagination-toc-entry-' + itemType)
         let tocItemTextSpan = document.createElement('span')
         tocItemTextSpan.classList.add('pagination-toc-text')
 
