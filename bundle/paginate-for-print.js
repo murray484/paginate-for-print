@@ -364,6 +364,7 @@ function createToc() {
         }
         var tocItemDiv = document.createElement('div');
         tocItemDiv.classList.add('pagination-toc-entry');
+        tocItemDiv.classList.add('pagination-toc-entry-' + itemType);
         var tocItemTextSpan = document.createElement('span');
         tocItemTextSpan.classList.add('pagination-toc-text');
 
