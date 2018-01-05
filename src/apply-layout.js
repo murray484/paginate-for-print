@@ -260,8 +260,9 @@ export class LayoutApplier {
         contentsContainer.classList.add('pagination-contents-container')
         mainContentsContainer.classList.add(
             'pagination-main-contents-container')
-
-        if (this.currentChapter || this.currentSection) {
+        
+        // Always include the header
+        //if (this.currentChapter || this.currentSection) {  
 
             let header = document.createElement('div')
 
@@ -286,7 +287,7 @@ export class LayoutApplier {
                 header.appendChild(sectionHeader)
             }
             page.appendChild(header)
-        }
+        //}
 
         topfloats.classList.add('pagination-topfloats')
         //topfloats.appendChild(document.createElement('p'))
