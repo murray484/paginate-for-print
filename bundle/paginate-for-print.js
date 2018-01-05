@@ -253,30 +253,31 @@ var LayoutApplier = exports.LayoutApplier = function () {
             contentsContainer.classList.add('pagination-contents-container');
             mainContentsContainer.classList.add('pagination-main-contents-container');
 
-            if (this.currentChapter || this.currentSection) {
+            // Always include the header
+            //if (this.currentChapter || this.currentSection) {  
 
-                var header = document.createElement('div');
+            var header = document.createElement('div');
 
-                header.classList.add('pagination-header');
+            header.classList.add('pagination-header');
 
-                if (this.currentChapter) {
+            if (this.currentChapter) {
 
-                    var chapterHeader = document.createElement('span');
+                var chapterHeader = document.createElement('span');
 
-                    chapterHeader.classList.add('pagination-header-chapter');
-                    chapterHeader.appendChild(this.currentChapter.cloneNode(true));
-                    header.appendChild(chapterHeader);
-                }
-
-                if (this.currentSection) {
-
-                    var sectionHeader = document.createElement('span');
-                    sectionHeader.classList.add('pagination-header-section');
-                    sectionHeader.appendChild(this.currentSection.cloneNode(true));
-                    header.appendChild(sectionHeader);
-                }
-                page.appendChild(header);
+                chapterHeader.classList.add('pagination-header-chapter');
+                chapterHeader.appendChild(this.currentChapter.cloneNode(true));
+                header.appendChild(chapterHeader);
             }
+
+            if (this.currentSection) {
+
+                var sectionHeader = document.createElement('span');
+                sectionHeader.classList.add('pagination-header-section');
+                sectionHeader.appendChild(this.currentSection.cloneNode(true));
+                header.appendChild(sectionHeader);
+            }
+            page.appendChild(header);
+            //}
 
             topfloats.classList.add('pagination-topfloats');
             //topfloats.appendChild(document.createElement('p'))
