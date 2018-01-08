@@ -353,13 +353,13 @@ function createToc() {
 
 	tocDiv.id = 'pagination-toc';
 	tocTitleH1.id = 'pagination-toc-title';
-	tocDiv.appendChild('tocTitleH1');
+	tocDiv.appendChild(tocTitleH1);
 
 	for (var i = 0; i < tocItems.length; i++) {
 		if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h1')) {
-			itemType = 'chapter';
-		} else if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h2')) {
 			itemType = 'section';
+		} else if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h2')) {
+			itemType = 'chapter';
 		} else if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h3')) {
 			itemType = 'subsection';
 		} else {
