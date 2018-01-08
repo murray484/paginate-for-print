@@ -177,7 +177,10 @@ export class ContentCutter {
     // further to the right than the right cutoff.
     findPageBreak(contents, rightCutOff) {
         let contentCoords, found, prevNode
-        if (contents.nodeType === 1) {
+		if (contents.nodeType === 1 && contents.classList.contains('prevent-break')){
+			return false;
+		}
+        else if (contents.nodeType === 1) {
             contentCoords = getBoundingClientRect(contents)
             if (contentCoords.left < rightCutOff) {
                 if (contentCoords.right > rightCutOff) {
