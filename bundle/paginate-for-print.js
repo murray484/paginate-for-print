@@ -366,6 +366,10 @@ function createToc() {
 			continue;
 		}
 
+		if (tocItems[i].textContent.trim() === '') {
+			return;
+		}
+
 		var tocItemDiv = document.createElement('div');
 		tocItemDiv.classList.add('pagination-toc-entry');
 		tocItemDiv.classList.add('pagination-toc-entry-' + itemType);
