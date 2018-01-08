@@ -367,7 +367,7 @@ function createToc() {
 		}
 
 		if (tocItems[i].textContent.trim() === '') {
-			return;
+			continue;
 		}
 
 		var tocItemDiv = document.createElement('div');
