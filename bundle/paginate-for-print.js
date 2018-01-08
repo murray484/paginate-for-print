@@ -348,7 +348,7 @@ var _matchesSelector = require('./matches-selector');
 function createToc() {
 	var tocDiv = document.createElement('div'),
 	    tocTitleH1 = document.createElement('h1'),
-	    tocItems = document.getElementById('pagination-layout').guerySelectorAll('h1,h2,h3'),
+	    tocItems = document.getElementById('pagination-layout').querySelectorAll('h1,h2,h3'),
 	    itemType = void 0;
 
 	tocDiv.id = 'pagination-toc';
