@@ -339,50 +339,52 @@ var LayoutApplier = exports.LayoutApplier = function () {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 exports.createToc = createToc;
 
 var _matchesSelector = require('./matches-selector');
 
 function createToc() {
-    var tocDiv = document.createElement('div'),
-        tocTitleH1 = document.createElement('h1'),
-        tocItems = document.getElementById('pagination-layout').querySelectorAll('.pagination-body'),
-        itemType = void 0;
+	var tocDiv = document.createElement('div'),
+	    tocTitleH1 = document.createElement('h1'),
+	    tocItems = document.getElementById('pagination-layout').guerySelectorAll('h1,h2,h3'),
+	    itemType = void 0;
 
-    tocDiv.id = 'pagination-toc';
-    tocTitleH1.id = 'pagination-toc-title';
-    tocDiv.appendChild(tocTitleH1);
+	tocDiv.id = 'pagination-toc';
+	tocTitleH1.id = 'pagination-toc-title';
+	tocDiv.appendChild('tocTitleH1');
 
-    for (var i = 0; i < tocItems.length; i++) {
-        if ((0, _matchesSelector.matchesSelector)(tocItems[i], '.pagination-chapter')) {
-            itemType = 'chapter';
-        } else if ((0, _matchesSelector.matchesSelector)(tocItems[i], '.pagination-section')) {
-            itemType = 'section';
-        } else {
-            continue;
-        }
-        var tocItemDiv = document.createElement('div');
-        tocItemDiv.classList.add('pagination-toc-entry');
-        tocItemDiv.classList.add('pagination-toc-entry-' + itemType);
-        var tocItemTextSpan = document.createElement('span');
-        tocItemTextSpan.classList.add('pagination-toc-text');
+	for (var i = 0; i < tocItems.length; i++) {
+		if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h1')) {
+			itemType = 'chapter';
+		} else if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h2')) {
+			itemType = 'section';
+		} else if ((0, _matchesSelector.matchesSelector)(tocItems[i], 'h3')) {
+			itemType = 'subsection';
+		} else {
+			continue;
+		}
 
-        tocItemTextSpan.appendChild(document.createTextNode(tocItems[i].querySelector('.pagination-header-' + itemType).textContent.trim()));
-        tocItemDiv.appendChild(tocItemTextSpan);
+		var tocItemDiv = document.createElement('div');
+		tocItemDiv.classList.add('pagination-toc-entry');
+		tocItemDiv.classList.add('pagination-toc-entry-' + itemType);
+		var tocItemTextSpan = document.createElement('span');
+		tocItemTextSpan.classList.add('pagination-toc-text');
 
-        var tocItemPnSpan = document.createElement('span');
-        tocItemPnSpan.classList.add('pagination-toc-pagenumber');
+		tocItemTextSpan.appendChild(document.createTextNode(tocItems[i].textContent.trim()));
+		tocItemDiv.appendChild(tocItemTextSpan);
 
-        tocItemPnSpan.appendChild(document.createTextNode(tocItems[i].querySelector('.pagination-pagenumber').textContent.trim()));
+		var tocItemPnSpan = document.createElement('span');
+		tocItemPnSpan.classList.add('pagination-toc-pagenumber');
 
-        tocItemDiv.appendChild(tocItemPnSpan);
+		tocItemPnSpan.appendChild(document.createTextNode(tocItems[i].closest('.pagination-page').querySelector('.pagination-pagenumber').textContent.trim()));
+		tocItemDiv.appendChild(tocItemPnSpan);
 
-        tocDiv.appendChild(tocItemDiv);
-    }
+		tocDiv.appendChild(tocItemDiv);
+	}
 
-    return tocDiv;
+	return tocDiv;
 }
 
 },{"./matches-selector":7}],3:[function(require,module,exports){
