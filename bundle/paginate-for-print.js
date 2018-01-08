@@ -588,7 +588,9 @@ var ContentCutter = exports.ContentCutter = function () {
             var contentCoords = void 0,
                 found = void 0,
                 prevNode = void 0;
-            if (contents.nodeType === 1) {
+            if (contents.classList.contains('prevent-break')) {
+                return false;
+            } else if (contents.nodeType === 1) {
                 contentCoords = (0, _getBoundingClientRect.getBoundingClientRect)(contents);
                 if (contentCoords.left < rightCutOff) {
                     if (contentCoords.right > rightCutOff) {
